@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home/Feed</title>
+    <script defer type ="module" src="/index.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+#login-button, #logout-button {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        background-color: #67929e;
+        border: none;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      #login-button:hover, #logout-button:hover {
+        background-color: #2b6c82;
+      }
+        .mynav {
+            white-space: nowrap;
+          display: flex;
+          justify-content: center;
+        }
+        .mynav ul {
+          display: flex;
+          justify-content: space-between;
+          list-style-type: none;
+          padding-left: 10px;
+          padding-right: 10px;
+          width: 100%; /* Adjust this percentage to control the space between menu items */
+        }
+        .mynav a {
+        
+            display: inline-block;
+            padding-bottom: 5px;
+            color:#67929e;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 7px 15px; 
+        }
+
+
+        .mynav a.active {
+          font-weight: bold;
+          border-bottom: 2px solid #2b6c82;
+         padding-bottom: 10px;
+         
+         margin-left:  20px;
+         margin-right:  20px;
+}
+    
+        .mynav a:hover {
+          color: #2b6c82;
+        }
+        .target {
+          position: absolute;
+          border-bottom: 4px solid transparent;
+          z-index: -1;
+          transform: translateX(-60px);
+          transition: all 0.4s;
+        }
+        body {
+          font-family: 'Montserrat', sans-serif;
+        }
+
+ 
+
+        h1 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.line {
+ background-color:#67929e;
+          height: 2px;
+            width: 90%;   /* Change this to adjust the line width */
+            margin-left: auto;
+            margin-right: auto;
+
+    
+}
+.post-form, .reply-form {
+    margin-bottom: 20px;
+}
+
+.post-form input, .reply-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.post {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+
+
+}
+
+#logout-button:hover {
+    background-color: #2b6c82;
+}
+.header {
+          font-size: 30px;
+          font-family: 'Shrikhand', cursive;
+        color: #2b6c82;
+    text-align: center;
+    width: 100%;
+}
+img{
+    border: 0px;
+    margin: 0px;
+  }
+  .container {
+    margin-top:20px;
+      display: flex;
+      flex-wrap: wrap;
+     
+      margin-left: 9%;
+  }
+  .post {
+    text-align: center;
+    background-color:#dcebef ;
+     
+      
+      width:400px;
+      height: 500px;
+     
+      margin-left:20px;
+      margin-top: 20px;
+      overflow: hidden; /* Hide text that doesn't fit in the box */
+      text-overflow: ellipsis; /* Add ... for overflow text */
+  }
+  .read-more {
+
+border: 10px solid #2b6c82;
+background-color: #2b6c82;
+font-weight: bold;;
+color: lightblue;
+  cursor: pointer;
+  
+}
+.read-more:hover {
+
+border: 10px solid #2b6c82;
+background-color: #2b6c82;
+font-weight: bold;;
+color:purple;
+cursor: pointer;
+
+}
+    </style>
+    
+  <div class="header">
+    <h1>Kelsey's Blog</h1>
+  </div>
+  
+<div class="line"></div>
+  
+<nav class="mynav">
+  <div>
+    
+      <ul id="mynav-ul">
+          <li><a href="/index.html">HOME/FEED</a></li>
+        
+          <li><a href="/create-account.html">CREATE ACCOUNT</a></li>
+         
+        
+      </ul>
+  </div>   
+</nav>
+<h3 style=" text-align:center; ">These posts dont go anywhere need to add that for final</h3>
+
+
+<div class="container">
+  <div class="post">
+    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
+    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
+    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
+   <div style="margin-top: 20px;">
+    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
+   </div>
+    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
+  </div>
+  <div class="post">
+    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
+    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
+    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
+   <div style="margin-top: 20px;">
+    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
+   </div>
+    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
+  </div>
+  <div class="post">
+    <img src="/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
+    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
+    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
+   <div style="margin-top: 20px;">
+    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
+   </div>
+    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
+  </div>
+  <div class="post">
+    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
+    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
+    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
+   <div style="margin-top: 20px;">
+    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
+   </div>
+    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
+  </div>
+  <div class="post">
+    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
+    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
+    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
+   <div style="margin-top: 20px;">
+    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
+   </div>
+    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
+  </div>
+  <div class="post">
+    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
+    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
+    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
+   <div style="margin-top: 20px;">
+    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
+   </div>
+    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+</body>
+<script defer>
+  // Get current page URL
+  let url = window.location.href;
+
+  // Select nav links
+  let navLinks = document.querySelectorAll('.mynav a');
+
+  // Loop through links
+  for (let navLink of navLinks) {
+      // Check if link href matches current URL
+      if (navLink.href == url) {
+          // Add 'active' class
+          navLink.classList.add('active');
+      }
+  }
+</script>
+
+</html>
+
+
+

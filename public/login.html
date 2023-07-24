@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Defining character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Setting up viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Defining the page title -->
+    <title>Home/Feed</title>
+
+    <!-- Deferring main JavaScript module -->
+    <script defer type ="module" src="/index.js"></script>
+
+    <!-- Importing external fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Styling for various elements -->
+    <style>
+        /* Styling for navigation bar and navigation elements */
+        .mynav {
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+        }
+        .mynav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+        }
+        .mynav a {
+            display: inline-block;
+            padding-bottom: 5px;
+            color:#67929e;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 7px 15px; 
+        }
+        .mynav a.active {
+            font-weight: bold;
+            border-bottom: 2px solid #2b6c82;
+            padding-bottom: 10px;
+            margin-left:  20px;
+            margin-right:  20px;
+        }
+        .mynav a:hover {
+            color: #2b6c82;
+        }
+
+        /* Styling for animated underline */
+        .target {
+            position: absolute;
+            border-bottom: 4px solid transparent;
+            z-index: -1;
+            transform: translateX(-60px);
+            transition: all 0.4s;
+        }
+
+        /* Styling for the body and header */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header {
+            font-size: 30px;
+            font-family: 'Shrikhand', cursive;
+            color: #2b6c82;
+            text-align: center;
+            width: 100%;
+        }
+        h1 {
+            
+            margin: 0;
+            padding: 10px 0;
+        }
+        /* Styling for horizontal separator line */
+        .line {
+            background-color:#67929e;
+            height: 2px;
+            width: 90%;   
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Styling for login form */
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  
+        .login-page {
+            width: 200px;
+            width: 600px;
+            padding: 8% 0 0;
+            margin: auto;
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: none;
+            margin-top: 50px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .form {
+  
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 600px; /* Make sure to adjust this to match the login-page width */
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form input, .form button {
+  font-family: "Roboto", sans-serif;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  font-size: 14px;
+  box-sizing: border-box; /* Added this to keep the inputs and button the same width */
+}
+
+.form button {
+    font-weight: bold;
+  text-transform: uppercase;
+  background: #67929e;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background: #2b6c82;
+}
+
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.login-to-leave-comments {
+           
+           font-size: 30px;
+           font-family: 'Shrikhand', cursive;
+           color: #2b6c82;
+           text-align: center;
+           width: 100%;
+           margin: 0;
+           padding: 10px 0;
+       }
+    </style>
+    
+</head>
+<body>
+    <div class="content">
+        <!-- Displaying blog title -->
+        <div class="header">
+            <h1>Kelsey's Blog</h1>
+        </div>
+
+        <!-- Horizontal separator line -->
+        <div class="line"></div>
+      
+        <!-- Navigation bar -->
+        <nav class="mynav">
+            <div>
+                <ul> 
+                    <li><a href="/index.html">HOME/FEED</a></li>
+                   
+                    <li><a href="/create-account.html">CREATE ACCOUNT</a></li>
+                    
+                </ul>
+            </div>   
+        </nav>
+
+        <div class="login-page">
+            <h1 class="login-to-leave-comments" style=" text-align: center;">Log In To Leave Comments</h1>
+            <div class="form">
+              <form class="login-form">
+                <input type="email" id="login-email" placeholder="Email">
+                <input type="password" id="login-password" placeholder="Password"/>
+                <button id="login-button">login</button>
+                <p style=" color:#67929e;" class="message">Not registered? <a href="/create-account.html">CREATE ACCOUNT</a></p>
+              </form>
+            </div>
+        </div>
+    </div>
+    <!-- Firebase JS SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+
+    <!-- Animated underline for nav links -->
+    <span class="target"></span>
+
+    <!-- Deferring login script -->
+    <script defer type ="module" src="login.js"></script>
+
+    <!-- Placeholder for error message -->
+    <h2 id="FailMessage"></h2>
+
+    <!-- Script for highlighting active navigation link -->
+    <script>
+        let url = window.location.href;
+        let navLinks = document.querySelectorAll('.mynav a');
+        for (let navLink of navLinks) {
+            if (navLink.href == url) {
+                navLink.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

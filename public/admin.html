@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home/Feed</title>
+    <script defer type ="module" src="/public/admin.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+#login-button, #logout-button {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        background-color: #67929e;
+        border: none;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      #login-button:hover, #logout-button:hover {
+        background-color: #2b6c82;
+      }
+        .mynav {
+            white-space: nowrap;
+          display: flex;
+          justify-content: center;
+        }
+        .mynav ul {
+          display: flex;
+          justify-content: space-between;
+          list-style-type: none;
+          padding-left: 10px;
+          padding-right: 10px;
+          width: 100%; /* Adjust this percentage to control the space between menu items */
+        }
+        .mynav a {
+        
+            display: inline-block;
+            padding-bottom: 5px;
+            color:#67929e;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 7px 15px; 
+        }
+
+
+        .mynav a.active {
+          font-weight: bold;
+          border-bottom: 2px solid #2b6c82;
+         padding-bottom: 10px;
+         
+         margin-left:  20px;
+         margin-right:  20px;
+}
+      
+        .mynav a:hover {
+          color: #2b6c82;
+        }
+        .target {
+          position: absolute;
+          border-bottom: 4px solid transparent;
+          z-index: -1;
+          transform: translateX(-60px);
+          transition: all 0.4s;
+        }
+        body {
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .header {
+          font-size: 30px;
+          font-family: 'Shrikhand', cursive;
+        color: #2b6c82;
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.line {
+ background-color:#67929e;
+          height: 2px;
+            width: 90%;   /* Change this to adjust the line width */
+            margin-left: auto;
+            margin-right: auto;
+}
+#logout-button:hover {
+    background-color: #2b6c82;
+}
+    </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Kelsey's Blog</h1>
+</div>
+<div class="line"></div>
+<nav class="mynav">
+  <div>
+      <ul id="mynav-ul">
+          <li><a href="/public/index.html">HOME/FEED</a></li>
+          <li><a href="/public/contact.html">CONTACT</a></li>
+          <li><a href="/public/ADMIN.html">ADMIN</a></li>
+      </ul>
+  </div>   
+
+
+    
+      <span class="target"></span>
+    
+</body>
+<script defer>
+  // Get current page URL
+  let url = window.location.href;
+
+  // Select nav links
+  let navLinks = document.querySelectorAll('.mynav a');
+
+  // Loop through links
+  for (let navLink of navLinks) {
+      // Check if link href matches current URL
+      if (navLink.href == url) {
+          // Add 'active' class
+          navLink.classList.add('active');
+      }
+  }
+</script>
+
+</html>
+
+
+
