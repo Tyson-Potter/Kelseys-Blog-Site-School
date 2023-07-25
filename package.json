@@ -3,6 +3,9 @@
     "eslint": "^8.45.0"
   },
   "dependencies": {
+    "firebase": "^10.1.0",
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "^4.4.1",
     "serve": "^14.2.0"
   }
 }
