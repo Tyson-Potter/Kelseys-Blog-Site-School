@@ -1,12 +1,20 @@
 
 
-const {onRequest} = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
-
-// Create and deploy your first functions
-// https://firebase.google.com/docs/functions/get-started
-
- exports.helloWorld = onRequest((request, response) => {
-   logger.info("Hello logs!", {structuredData: true});
-   response.send("Hello from Firebase!");
+ const admin = require('firebase-admin');
+ const serviceAccount = require('./kelsey.json');
+ 
+ // Initialize the Firebase Admin SDK with your service account credentials.
+ admin.initializeApp({
+   credential: admin.credential.cert(serviceAccount)
  });
+ 
+ // Set the custom claim for the user.
+ const uid = 'Yg2xqUN7aag8oihzHAYUhoRG3in2'; // Replace with the user's UID.
+ const customClaims = { admin: true };
+ admin.auth().setCustomUserClaims(uid, customClaims)
+   .then(() => {
+     console.log('Custom claim added to user');
+   })
+   .catch((error) => {
+     console.log(error);
+   });

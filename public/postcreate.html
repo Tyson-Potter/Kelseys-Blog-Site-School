@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Creator</title>
+
+    <script defer type ="module" src="/public/postCreator.js"></script>
     <style>
         /* Global */
         * {
@@ -22,7 +24,7 @@
             align-items: center;
             height: 100vh;
         }
-
+        https://firebase.google.com/support/release-notes/admin/node#version_1141_-_22_december_2022
         /* Form styling */
         form {
             background-color: #ffffff;
@@ -80,9 +82,13 @@
     <form>
         <h1>Post Creator</h1>
         <input type="text" name="header" placeholder="Header">
+        <input type="text" name="Category" placeholder="Category">
         <textarea name="content" placeholder="Content" rows="5"></textarea>
         <input type="file" name="image" id="image">
         <input type="submit" value="Submit">
     </form>
 </body>
+
+
+
 </html>

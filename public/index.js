@@ -23,6 +23,21 @@ const users = collection(db, 'users');
 // Handle Auth state changes (login/logout)
 onAuthStateChanged(auth, (user) => {
   if (user) {
+
+
+    auth.currentUser.getIdTokenResult()
+  .then((idTokenResult) => {
+    if (idTokenResult.claims.admin) {
+      // User is an admin.
+      console.log("User is an admin");
+    } else {
+      // User is not an admin.
+      console.log("User is not an admin");
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
     // User is logged in
 
     // Find 'create account' link and hide it
@@ -74,7 +89,7 @@ onAuthStateChanged(auth, (user) => {
     // so when it's clicked, the user is redirected to the login page
     loginButton.addEventListener('click', (e) => {
       e.preventDefault();
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
     });
   }
 });
