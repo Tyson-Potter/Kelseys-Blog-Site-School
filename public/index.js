@@ -1,7 +1,19 @@
-// Import necessary Firebase modules
-import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js';
-import {signOut, getAuth, onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js';
-import {getFirestore, collection, getDocs, getDoc} from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js';
+// // Import necessary Firebase modules
+// import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js';
+// import {signOut, getAuth, onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js';
+// import {getFirestore, collection, getDocs, getDoc} from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js';
+// import {getStorage, ref} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js';
+// import {uploadBytesResumable} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js';
+
+
+
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js';
+import {signOut, createUserWithEmailAndPassword, getAuth, onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js';
+import {getFirestore, collection, getDocs, getDoc, setDoc, doc} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js';
+import {getDownloadURL} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js';
+
+import {getStorage, ref} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js';
+import {uploadBytesResumable} from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js';
 
 // Initialize Firebase app
 const firebaseApp = initializeApp({
@@ -16,6 +28,107 @@ const firebaseApp = initializeApp({
 // Initialize Firebase Auth and Firestore Database 
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
+const postsRef = collection(db, "posts");
+// Get a reference to the container element
+const container = document.querySelector("#container");
+
+// Define the gotoPost function
+function gotoPost(postId) {
+  // Your code here
+  console.log("Going to post:", postId);
+}
+
+// Define the maximum number of words to display
+const maxWords = 20;
+
+// Retrieve all the posts
+getDocs(postsRef)
+  .then((querySnapshot) => {
+    // Loop through the retrieved documents
+    querySnapshot.forEach((doc) => {
+      // Get the post data and ID
+      const postData = doc.data();
+      const postId = doc.id;
+
+      // Create a new post element
+      const postElement = document.createElement("div");
+      postElement.classList.add("post");
+
+      // Create the image element
+      const imageElement = document.createElement("img");
+      // imageElement.classList.add("img-fluid");
+      // imageElement.setAttribute("alt", "Responsive image");
+     
+// Get the image element by its ID or other selector
+
+
+// Add the CSS class to the image
+imageElement.classList.add('image-size-percentage');
+
+      if (postData.imageUrl) {
+        // If the post has an image, get a download URL for the image
+        const storage = getStorage(firebaseApp);
+        const imageRef = ref(storage, postData.imageUrl);
+        getDownloadURL(imageRef)
+          .then((url) => {
+            // Set the src attribute of the image element to the download URL
+            imageElement.setAttribute("src", url);
+          })
+          .catch((error) => {
+            // Handle errors here
+            console.log("Error getting download URL:", error);
+          });
+      }
+      postElement.appendChild(imageElement);
+
+      // Create the title element
+      const titleElement = document.createElement("h3");
+      titleElement.textContent = postData.header;
+      postElement.appendChild(titleElement);
+
+      // Create the category element
+      const categoryElement = document.createElement("h5");
+      categoryElement.textContent = postData.category;
+      postElement.appendChild(categoryElement);
+
+      // Create the content element
+      const contentWrapper = document.createElement("div");
+      const contentElement = document.createElement("p");
+      contentElement.textContent = truncateText(postData.content, maxWords);
+      contentWrapper.appendChild(contentElement);
+      postElement.appendChild(contentWrapper);
+    // Define the gotoPost function
+function gotoPost(postId) {
+  // Navigate to the posts.html page with the given ID
+  window.location.href = "/public/posts.html?id=" + postId;
+}
+
+       // Create the read more button
+       const readMoreButton = document.createElement("button");
+       readMoreButton.classList.add("read-more", "btn", "btn-primary", "mt-2");
+       readMoreButton.textContent = "READ MORE";
+       readMoreButton.addEventListener("click", () => gotoPost(postId));
+       postElement.appendChild(readMoreButton);
+
+       // Append the post element to the container element
+       container.appendChild(postElement);
+    });
+  })
+  .catch((error) => {
+    // Handle errors here
+    console.log("Error getting posts:", error);
+  });
+
+// Truncate text to a maximum number of words and add an ellipsis if necessary
+function truncateText(text, maxWords) {
+  const words = text.split(/\s+/);
+  if (words.length > maxWords) {
+    return words.slice(0, maxWords).join(" ") + "…";
+  } else {
+    return text;
+  }
+}
+
 
 // Create reference to 'users' collection in Firestore
 const users = collection(db, 'users');
@@ -93,3 +206,9 @@ onAuthStateChanged(auth, (user) => {
     });
   }
 });
+// Get a reference to the Firestore database
+
+
+// Get a reference to the posts collection
+
+

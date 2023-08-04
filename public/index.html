@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home/Feed</title>
-    <script defer type ="module" src="index.js"></script>
+    <script  type ="module" src="index.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -123,10 +123,7 @@
     text-align: center;
     width: 100%;
 }
-img{
-    border: 0px;
-    margin: 0px;
-  }
+
   .container {
     margin-top:20px;
       display: flex;
@@ -165,6 +162,16 @@ color:purple;
 cursor: pointer;
 
 }
+/* Add this to your CSS file */
+.post img {
+  width: 300px;
+  height: 170x;
+  object-fit: cover;
+}
+.image-size-percentage {
+  width: 50%; /* Set the desired width percentage */
+  height: 50%; /* Set the desired height percentage */
+}
     </style>
     
   <div class="header">
@@ -190,61 +197,18 @@ cursor: pointer;
 <h3 style=" text-align:center; ">These posts dont go anywhere need to add that for final</h3>
 
 
-<div class="container">
-  <div class="post">
-    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
-    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
-    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
-   <div style="margin-top: 20px;">
-    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
-   </div>
-    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
-  </div>
-  <div class="post">
-    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
-    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
-    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
-   <div style="margin-top: 20px;">
-    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
-   </div>
-    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
-  </div>
-  <div class="post">
-    <img src="/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
-    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
-    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
-   <div style="margin-top: 20px;">
-    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
-   </div>
-    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
-  </div>
-  <div class="post">
-    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
-    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
-    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
-   <div style="margin-top: 20px;">
-    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
-   </div>
-    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
-  </div>
-  <div class="post">
-    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
-    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
-    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
-   <div style="margin-top: 20px;">
-    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
-   </div>
-    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
-  </div>
-  <div class="post">
-    <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> <!-- Responsive image -->
-    <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> <!-- Title -->
-    <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> <!-- Category -->
-   <div style="margin-top: 20px;">
-    <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <!-- Brief summary of text -->
-   </div>
-    <button class="read-more" class="btn btn-primary mt-2">READ MORE</button> 
-  </div>
+<div id="container" class="container">
+  <!-- <div class="post"> -->
+   
+  <!-- <div class="post"> -->
+    <!-- <img src="/img/coolSpace img.jpg" class="img-fluid" alt="Responsive image"> Responsive image -->
+    <!-- <h3 style="color: #2b6c82;font-family: 'Shrikhand', cursive; padding-top: 10px;padding-bottom: 0px;" class="mt-2">Title Goes here</h3> Title -->
+    <!-- <h5 style="padding-top: 0px;font-family: 'Montserrat', sans-serif;" class="mt-2">CATEGORY</h5> Category -->
+   <!-- <div style="margin-top: 20px;"> -->
+    <!-- <p style=" font-weight:550;  color: #2b6c82;font-family: 'Montserrat', sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> Brief summary of text -->
+   <!-- </div> -->
+    <!-- <button class="read-more" class="btn btn-primary mt-2">READ MORE</button>  -->
+  <!-- </div> -->
 </div>
 
 

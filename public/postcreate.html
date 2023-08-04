@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
             align-items: center;
             height: 100vh;
         }
-        https://firebase.google.com/support/release-notes/admin/node#version_1141_-_22_december_2022
+      
         /* Form styling */
         form {
             background-color: #ffffff;
@@ -91,4 +91,108 @@
 
 
 
+</html>
+ -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Form</title>
+    <style>
+        /* Global */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Body and main container setup */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f8f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+       
+        /* Form styling */
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            max-width: 500px; /* Limiting form width for better aesthetics on larger screens */
+            width: 90%; /* Responsiveness on smaller screens */
+        }
+
+        /* Heading color */
+        h1 {
+            color: #2b6c82;
+            text-align: center;
+            margin-bottom: 20px; /* More space between title and fields */
+        }
+
+        /* Input and textarea styling */
+        textarea, input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #c4c3c3;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s ease; /* Smooth transition for focus effect */
+        }
+
+        /* Highlighting fields on focus */
+        textarea:focus, input[type="text"]:focus, input[type="file"]:focus {
+            border-color: #2b6c82; /* Highlight with main color theme */
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            background-color: #2b6c82;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        /* Darkening submit button on hover */
+        input[type="submit"]:hover {
+            background-color: #204f60;
+        }
+    </style>
+</head>
+<body>
+    <h1>Post Creator</h1>
+    <form>
+        <label for="header">Header:</label>
+        <input type="text" name="header" id="header" required>
+        <br>
+        <label for="Category">Category:</label>
+        <input type="text" name="Category" id="Category" required>
+        <br>
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" required></textarea>
+        <br>
+        <label for="image">Image:</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        <br>
+        <button type="submit">Submit Post</button>
+    </form>
+    <script  type ="module" src="/public/postCreator.js"></script>
+</body>
 </html>
