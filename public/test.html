@@ -200,3 +200,205 @@
   </script>
   
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Defining character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Setting up viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Defining the page title -->
+    <title>Home/Feed</title>
+
+    <!-- Deferring main JavaScript module -->
+
+   
+    <!-- Importing external fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script type ="module" src="test.js"></script>
+    <!-- Styling for various elements -->
+    <style>
+        #login-button, #logout-button {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        background-color: #67929e;
+        border: none;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      #login-button:hover, #logout-button:hover {
+        background-color: #2b6c82;
+      }
+        /* Styling for navigation bar and navigation elements */
+        .mynav {
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+        }
+        .mynav ul {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+        }
+        .mynav a {
+            display: inline-block;
+            padding-bottom: 5px;
+            color:#67929e;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 7px 15px; 
+        }
+        .mynav a.active {
+            font-weight: bold;
+            border-bottom: 2px solid #2b6c82;
+            padding-bottom: 10px;
+            margin-left:  20px;
+            margin-right:  20px;
+        }
+        .mynav a:hover {
+            color: #2b6c82;
+        }
+
+        /* Styling for animated underline */
+        .target {
+            position: absolute;
+            border-bottom: 4px solid transparent;
+            z-index: -1;
+            transform: translateX(-60px);
+            transition: all 0.4s;
+        }
+
+        /* Styling for the body and header */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .header {
+            font-size: 30px;
+            font-family: 'Shrikhand', cursive;
+            color: #2b6c82;
+            text-align: center;
+            width: 100%;
+        }
+        h1 {
+            
+            margin: 0;
+            padding: 10px 0;
+        }
+        /* Styling for horizontal separator line */
+        .line {
+            background-color:#67929e;
+            height: 2px;
+            width: 75%;   
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Styling for login form */
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  
+      
+
+        .mynav {
+            white-space: nowrap;
+          display: flex;
+          justify-content: center;
+        }
+        .mynav ul {
+          display: flex;
+          justify-content: space-between;
+          list-style-type: none;
+          padding-left: 10px;
+          padding-right: 10px;
+          width: 100%; /* Adjust this percentage to control the space between menu items */
+        }
+        .mynav a {
+        
+            display: inline-block;
+            padding-bottom: 5px;
+            color:#67929e;
+            font-size: 20px;
+            text-decoration: none;
+            padding: 7px 15px; 
+        }
+
+
+        .mynav a.active {
+          font-weight: bold;
+          border-bottom: 2px solid #2b6c82;
+         padding-bottom: 10px;
+         
+         margin-left:  20px;
+         margin-right:  20px;
+}
+    
+        .mynav a:hover {
+          color: #2b6c82;
+        }
+        .target {
+          position: absolute;
+          border-bottom: 4px solid transparent;
+          z-index: -1;
+          transform: translateX(-60px);
+          transition: all 0.4s;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="content">
+        <!-- Displaying blog title -->
+        <div class="header">
+            <h1>Kelsey's Blog</h1>
+        </div>
+
+        <!-- Horizontal separator line -->
+        <div class="line"></div>
+      
+        <!-- Navigation bar -->
+
+        
+        <nav class="mynav">
+            <div>
+                <ul> 
+                    <li><a href="/index.html">HOME/FEED</a></li>
+                    <li><a href="/create-account.html">CREATE ACCOUNT</a></li>
+                    <span class="target"></span>
+                </ul>
+            </div>   
+        </nav>
+
+        <span class="target"></span>
+        <div id="container" class="container">
+           
+ 
+</body>
+<script defer>
+    // Get current page URL
+    let url = window.location.href;
+  
+    // Select nav links
+    let navLinks = document.querySelectorAll('.mynav a');
+  
+    // Loop through links
+    for (let navLink of navLinks) {
+        // Check if link href matches current URL
+        if (navLink.href == url) {
+            // Add 'active' class
+            navLink.classList.add('active');
+        }
+    }
+  </script>
+  
+</html>

@@ -1,47 +1,29 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-import {
-  
-  signOut,
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
-import {
-  query,
-  where,
-  getFirestore,
-  collection,
-  getDocs,
-  getDoc,
-  setDoc,
-  doc,
-} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
-import { getDownloadURL } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
 
-import {
-  getStorage,
-  ref,
-} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
-import { uploadBytesResumable } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
-// Initialize Firebase app
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBV9N0AzuVyaef8_nSHh2IaHnsESE9jGtI",
-  authDomain: "kelseys-blog.firebaseapp.com",
-  projectId: "kelseys-blog",
-  storageBucket: "kelseys-blog.appspot.com",
-  messagingSenderId: "882433426371",
-  appId: "1:882433426371:web:f050a491cfbbc15e347376",
-});
-
-
-        let url = window.location.href;
-        let navLinks = document.querySelectorAll('.mynav a');
-        for (let navLink of navLinks) {
-            if (navLink.href == url) {
-                navLink.classList.add('active');
+        // Define your components
+        var PostComponent = function(id, title, content, author) {
+            this.id = id;
+            this.title = title;
+            this.content = content;
+            this.author = author;
+            this.render = function() {
+                return `
+                    <div class="post">
+                        <h2 class="post-title">${this.title}</h2>
+                        <p class="post-content">${this.content}</p>
+                        <p class="post-author">Posted by: ${this.author}</p>
+                        <button class="reply-button active" id="reply-${this.id}">Reply</button>
+                        <button class="cancel-button" id="cancel-${this.id}">Cancel</button>
+                        <div class="arrow-div">
+                            <textarea class="reply-textarea" id="textarea-${this.id}" placeholder="Write your reply..."></textarea>
+                            <button class="arrow" id="arrow-${this.id}">
+                                <img src="SendArrow.png" alt="Arrow" />
+                            </button>
+                        </div>
+                    </div>
+                `;
             }
         }
-    
+
 
 
 
