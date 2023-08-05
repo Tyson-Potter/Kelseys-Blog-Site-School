@@ -1,12 +1,77 @@
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Post and Replies</title>
-    
-        <style>
 
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>Post and Replies</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap">
+        <style>
+#login-button, #logout-button {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  background-color: #67929e;
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#login-button:hover, #logout-button:hover {
+  background-color: #2b6c82;
+}
+
+.mynav {
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+}
+
+.mynav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%; /* Adjust this percentage to control the space between menu items */
+}
+
+.mynav a {
+  display: inline-block;
+  padding-bottom: 5px;
+  color:#67929e;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 7px 15px; 
+}
+
+.mynav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid #2b6c82;
+  padding-bottom: 10px;
+  margin-left:  20px;
+  margin-right:  20px;
+}
+
+.mynav a:hover {
+  color: #2b6c82;
+}
+
+.target {
+  position: absolute;
+  border-bottom: 4px solid transparent;
+  z-index: -1;
+  transform: translateX(-60px);
+  transition: all 0.4s;
+}
 body {
 font-family: Arial, sans-serif;
 background-color: #f9f8f7;
@@ -119,119 +184,102 @@ display: inline-block;
 
 }
 
+.arrow-div {
+  position: relative;
+}
 
+.arrow {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.arrow img {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+
+.reply-textarea.open + .arrow-div .arrow {
+  display: block;
+}
+.arrow:focus {
+    outline: none !important;
+}
+
+.arrow{
+    background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.arrow img {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.arrow-div {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+.reply-button {
+  display: inline-block;
+}
+.header {
+          font-size: 30px;
+          font-family: 'Shrikhand', cursive;
+        color: #2b6c82;
+    text-align: center;
+    width: 100%;
+}
+h1 {
+    margin: 0;
+    padding: 10px 0;
+}
     </style>
+
+
+
 </head>
 <body>
-    <div id="postContainer"></div>
-    <div id="repliesContainer"></div>
 
-    <script>
-      const urlParams = new URLSearchParams(window.location.search);
-     let id= urlParams.get('id');
-  
+  <div class="header">
+    <h1>Kelsey's Blog</h1>
+  </div>
+<nav class="mynav">
+    <div>
+        <ul id="mynav-ul">
+            <li><a href="index.html">HOME/FEED</a></li>
+            <li><a href="create-account.html">CREATE ACCOUNT</a></li>
+           
+          
+        </ul>
+    </div>   
+  </nav>
+    <div id="replies-container"></div>
+   <div id="postContainer"></div>
 
-
-
-
-        var ReplyComponent = function(id, content, author, subReplies = []) {
-            this.id = id;
-            this.content = content;
-            this.author = author;
-            this.subReplies = subReplies;
-
-            // Generates HTML for the reply component
-            this.render = function() {
-                return `
-                    <div style="border:3px solid grey" class="reply">
-                        <p class="reply-content">${this.content}</p>
-                        <p class="reply-author">Reply by: ${this.author}</p>
-                        <button class="reply-button active" id="reply-${this.id}">Reply</button>
-                        <button class="cancel-button" id="cancel-${this.id}">Cancel</button>
-                        <div class="arrow-div">
-                            <textarea class="reply-textarea" id="textarea-${this.id}" placeholder="Write your reply..."></textarea>
-                            <button class="arrow" id="arrow-${this.id}">
-                                <img src="SendArrow.png" alt="Arrow" />
-                            </button>
-                        </div>
-                        ${this.subReplies.map(reply => reply.render()).join('')}
-                    </div>
-                `;
-            };
-        };
-
-        var PostComponent = function(id, title, content, author, replies = []) {
-            this.id = id;
-            this.title = title;
-            this.content = content;
-            this.author = author;
-            this.replies = replies;
-
-            // Generates HTML for the post component
-            this.render = function() {
-                return `
-                    <div style="border:3px solid grey" class="post">
-                        <h2 class="post-title">${this.title}</h2>
-                        <p class="post-content">${this.content}</p>
-                        <p class="post-author">Posted by: ${this.author}</p>
-                        <button class="reply-button active" id="reply-${this.id}">Reply</button>
-                        <button class="cancel-button" id="cancel-${this.id}">Cancel</button>
-                        <div class="arrow-div">
-                            <textarea class="reply-textarea" id="textarea-${this.id}" placeholder="Write your reply..."></textarea>
-                            <button class="arrow" id="arrow-${this.id}">
-                                <img src="SendArrow.png" alt="Arrow" />
-                            </button>
-                        </div>
-                        ${this.replies.map(reply => reply.render()).join('')}
-                    </div>
-                `;
-            };
-        };
-
-        // Create sample data
-        var subReply1 = new ReplyComponent(3, "This is a sub-reply to the above reply.", "User3");
-        var reply1 = new ReplyComponent(1, "This is a reply to the post.", "User1", [subReply1]);
-        var reply2 = new ReplyComponent(2, "This is another reply to the post.", "User2");
-        var post1 = new PostComponent(1, "Post Title", "This is the content of the post.", "Author", [reply1, reply2]);
-
-        // Render post and replies
-        document.getElementById('postContainer').innerHTML = post1.render();
-
-
-
-
-        window.onload = function() {
-        var replyButtons = document.querySelectorAll('.reply-button');
-        var cancelButtons = document.querySelectorAll('.cancel-button');
-        
-        replyButtons.forEach(function(button, index) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                var parentElement = this.parentElement;
-                var textarea = parentElement.querySelector('.reply-textarea');
-                var arrow = parentElement.querySelector('.arrow');
-                textarea.classList.toggle('open');
-                arrow.style.display = textarea.classList.contains('open') ? 'inline-block' : 'none';
-                this.classList.toggle('active');
-                cancelButtons[index].classList.toggle('active');
-            });
-        });
-
-        cancelButtons.forEach(function(button, index) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                var parentElement = this.parentElement;
-                var textarea = parentElement.querySelector('.reply-textarea');
-                var arrow = parentElement.querySelector('.arrow');
-                textarea.classList.remove('open');
-                arrow.style.display = 'none';
-                this.classList.toggle('active');
-                replyButtons[index].classList.toggle('active');
-            });
-        });
-    };
-
-        
-    </script>
+   <div id="repliesContainer"></div>
+   
+    
+   <script  type="module" src="/posts.js"></script>
 </body>
 </html>

@@ -66,7 +66,7 @@ const auth = getAuth();
 function createSubReplyElement(subReply) {
   // Create the sub-reply element with a red border
   const subReplyElement = document.createElement("div");
-  subReplyElement.style.border = "3px solid red"; // Red border
+  subReplyElement.style.border = "3px solid #2b6c82;"; // Red border
   subReplyElement.style.marginLeft = "15px"; // Smaller on the left
   subReplyElement.style.marginRight = "15px";
   subReplyElement.style.marginTop = "15px"; // Smaller on the right
@@ -106,7 +106,7 @@ const user = auth.currentUser;
   return subReplyElement;
 }
 
-function createReplyElement(reply) {
+function createReplyElement(reply,username123) {
 
   const uniqueReplyId = reply.id;
   const replyButtonId = `reply-${uniqueReplyId}`;
@@ -128,7 +128,11 @@ function createReplyElement(reply) {
   const user = auth.currentUser;
   const replyAuthor = document.createElement("p");
   replyAuthor.classList.add("reply-author");
+
+
+    
   const username = user.email.split("@")[0];
+
   replyAuthor.textContent = `Reply by: ${username}`;
   
 
@@ -373,7 +377,7 @@ if (docSnap.exists()) {
         const reply = doc.data();
 
         const replyElement = createReplyElement(reply);
-        repliesContainer.appendChild(replyElement);
+        repliesContainer.appendChild(replyElement );
 
         reply.subReplies.forEach((SubReply) => {
           const subReplyElement = createSubReplyElement(SubReply);
