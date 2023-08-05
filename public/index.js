@@ -143,6 +143,9 @@ onAuthStateChanged(auth, (user) => {
     if (idTokenResult.claims.admin) {
       // User is an admin.
       console.log("User is an admin");
+      let navbar = document.getElementById("mynav-ul");
+      navbar .appendChild(document.createElement("li")).innerHTML = "<a href='admin.html'>ADMIN</a>";
+      navbar .appendChild(document.createElement("li")).innerHTML = "<a href='postcreate.html'>Post Creator</a>";
     } else {
       // User is not an admin.
       console.log("User is not an admin");

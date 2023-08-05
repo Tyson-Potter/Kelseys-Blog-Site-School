@@ -17,24 +17,23 @@ const firebaseApp = initializeApp({
     messagingSenderId: "882433426371",
     appId: "1:882433426371:web:f050a491cfbbc15e347376"
 });
-
-onAuthStateChanged(getAuth(firebaseApp), (user) => {
-    if (user) {
-      // User is logged in
-  
-      // Hide 'create account' link
-      
-      console.log(`User is logged in with email: ${user.email}`);
-      
-      // C
-    } else {
-      // User is logged out
-  
-      // Show 'create account' link
-   
-  
-      console.log('User is logged out');
-    }
+let auth= getAuth(firebaseApp);
+let user = auth.currentUser;
+onAuthStateChanged(auth, (user) => {
+    auth.currentUser.getIdTokenResult()
+    .then((idTokenResult) => {
+      if (idTokenResult.claims.admin) {
+        let navbar = document.getElementById("mynav-ul");
+   navbar .appendChild(document.createElement("li")).innerHTML = "<a href='admin.html'>ADMIN</a>";
+   navbar .appendChild(document.createElement("li")).innerHTML = "<a href='postcreate.html'>ADMIN</a>";
+        
+      } else {
+        window.location.href = "/index.html";
+      }
+    })
+    .catch((error) => {
+        window.location.href = "/index.html"
+    });
   });
 
 // Get a reference to the Firestore database
@@ -51,7 +50,7 @@ window.onload = function() {
         e.preventDefault();
 
         // Get the values of the form fields.
-        var header = document.querySelector('input[name="header"]').value;
+        var title = document.querySelector('input[name="title"]').value;
         var category = document.querySelector('input[name="Category"]').value;
         var content = document.querySelector('textarea[name="content"]').value;
         var image = document.querySelector('input[name="image"]').files[0];
@@ -69,7 +68,7 @@ window.onload = function() {
             uploadTask.on("state_changed", function(snapshot) {
                 // Handle progress updates here.
             }, function(error) {
-                // Handle errors here.
+                // Handle errors herecodepn.
                 console.log("Error uploading image:", error);
             }, function() {
                 // Handle successful uploads here.
@@ -77,7 +76,7 @@ window.onload = function() {
 
                 // Save the post data to Firestore.
                 setDoc(doc(db, "posts", postId), {
-                    header: header,
+                    title: title,
                     category: category,
                     content: content,
                     imageUrl: imageRef.fullPath
@@ -92,7 +91,7 @@ window.onload = function() {
         } else {
             // Save the post data to Firestore without an image.
             setDoc(doc(db, "posts", postId), {
-                header: header,
+                title: title,
                 category: category,
                 content: content
             }).then(function() {
