@@ -1,217 +1,237 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
- 
-    <title>Document</title>
-    <style>
+    <title>Post and Replies</title>
+    
+        <style>
 
-        body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f8f7;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        }
-        
-        #postContainer, #repliesContainer {
-        width: 60%;
-        margin: 0 auto 30px;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 5px;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-        }
-        
-        .post, .reply, .sub-reply {
-        padding: 20px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        }
-        
-        .post, .reply {
-        background-color: #e9e9e9;
-        }
-        
-        .sub-reply {
-        background-color: #f1f1f1;
-        margin-left: 20px;
-        border-left: 1px solid #c4c3c3;
-        font-size: 0.9em;
-        }
-        
-        .post-title {
-        color: #2b6c82;
-        text-align: center;
-        }
-        
-        .post-content, .post-author, .reply-content, .reply-author {
-        margin: 10px 0;
-        }
-        
-        .reply-button, .cancel-button {
-        background-color: #204f60;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 10px;
-        display: none;
-        }
-        
-        .reply-button.active, .cancel-button.active {
-        display: inline-block;
-        }
-        
-        .reply-button:hover, .cancel-button:hover {
-        background-color: #183d46;
-        }
-        
-        .reply .reply-button {
-        background-color: #2b6c82;
-        }
-        
-        .reply-textarea {
-        display: none;
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #c4c3c3;
-        border-radius: 4px;
-        font-size: 0.9em;
-        
-        
-        
-        }
-        
-        .reply-textarea.open {
-        width: 98%;
-        height: 15vh;
-        display: block;
-        }
-        
-        
-        .arrow-div {
-        position: relative;
-        }
-        
-        .arrow {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        border: none;
-        background: transparent;
-        display: none; 
-        }
-        
-        .arrow img {
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        transition: transform 0.2s;
-        }
-        
-        .reply-textarea.open + .arrow-div .arrow {
-        display: inline-block;
-        
-        }
-        
-        .arrow-div {
-          position: relative;
-        }
-        
-        .arrow {
-          display: none;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 30px;
-          height: 30px;
-          background-color: #007bff;
-          border: none;
-          border-radius: 50%;
-          cursor: pointer;
-        }
-        
-        .arrow img {
-          width: 20px;
-          height: 20px;
-          margin: 5px;
-        }
-        
-        .reply-textarea.open + .arrow-div .arrow {
-          display: block;
-        }
-        .arrow:focus {
-            outline: none !important;
-        }
-        
-        .arrow{
-            background-color: transparent !important;
-          border: none !important;
-          outline: none !important;
-        }
-        
-        .arrow img {
-          width: 60px;
-          height: 60px;
-          margin: 5px;
-        }
-        
-        button {
-          background-color: transparent;
-          border: none;
-        }
-        
-        .arrow-div {
-          position: relative;
-        }
-        
-        .arrow {
-          position: absolute;
-          bottom: 40px;
-          right: 40px;
-        }
-        .reply-button {
-          display: inline-block;
-        }
-        .sub-reply {
-  border: 3px solid red;
-  margin-left: 20px;
-  margin-bottom: 15px;
-  padding: 10px;
+body {
+font-family: Arial, sans-serif;
+background-color: #f9f8f7;
+color: #333;
+margin: 0;
+padding: 0;
 }
 
-.sub-reply-author {
-  font-weight: bold;
-  margin-bottom: 5px;
+#postContainer, #repliesContainer {
+width: 60%;
+margin: 0 auto 30px;
+padding: 20px;
+background-color: #ffffff;
+border-radius: 5px;
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
 }
 
-.sub-reply-date-time {
-  float: right;
-  margin-left: 10px;
+.post, .reply, .sub-reply {
+padding: 20px;
+border-radius: 5px;
+margin-bottom: 20px;
 }
 
-.sub-reply-content {
-  margin-bottom: 10px;
+.post, .reply {
+background-color: #e9e9e9;
 }
-            </style>
+
+.sub-reply {
+background-color: #f1f1f1;
+margin-left: 20px;
+border-left: 1px solid #c4c3c3;
+font-size: 0.9em;
+}
+
+.post-title {
+color: #2b6c82;
+text-align: center;
+}
+
+.post-content, .post-author, .reply-content, .reply-author {
+margin: 10px 0;
+}
+
+.reply-button, .cancel-button {
+background-color: #204f60;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+margin-top: 10px;
+display: none;
+}
+
+.reply-button.active, .cancel-button.active {
+display: inline-block;
+}
+
+.reply-button:hover, .cancel-button:hover {
+background-color: #183d46;
+}
+
+.reply .reply-button {
+background-color: #2b6c82;
+}
+
+.reply-textarea {
+display: none;
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border: 1px solid #c4c3c3;
+border-radius: 4px;
+font-size: 0.9em;
+
+
+
+}
+
+.reply-textarea.open {
+width: 98%;
+height: 15vh;
+display: block;
+}
+
+
+.arrow-div {
+position: relative;
+}
+
+.arrow {
+position: absolute;
+bottom: 0;
+right: 0;
+border: none;
+background: transparent;
+display: none; 
+}
+
+.arrow img {
+width: 50px;
+height: 50px;
+cursor: pointer;
+transition: transform 0.2s;
+}
+
+.reply-textarea.open + .arrow-div .arrow {
+display: inline-block;
+
+}
+
+
+    </style>
 </head>
 <body>
-  <nav class="mynav">
-    <div>
-        <ul> 
-            <li><a href="/index.html">HOME/FEED</a></li>
-           
-            <li><a href="/create-account.html">CREATE ACCOUNT</a></li>
-            
-        </ul>
-    </div>   
-</nav>
-    <div  id="postContainer"></div>
-    <div  id="repliesContainer"></div>
-    <script def type="module" src="/public/posts.js"></script>
+    <div id="postContainer"></div>
+    <div id="repliesContainer"></div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+     let id= urlParams.get('id');
+  
+
+
+
+
+        var ReplyComponent = function(id, content, author, subReplies = []) {
+            this.id = id;
+            this.content = content;
+            this.author = author;
+            this.subReplies = subReplies;
+
+            // Generates HTML for the reply component
+            this.render = function() {
+                return `
+                    <div style="border:3px solid grey" class="reply">
+                        <p class="reply-content">${this.content}</p>
+                        <p class="reply-author">Reply by: ${this.author}</p>
+                        <button class="reply-button active" id="reply-${this.id}">Reply</button>
+                        <button class="cancel-button" id="cancel-${this.id}">Cancel</button>
+                        <div class="arrow-div">
+                            <textarea class="reply-textarea" id="textarea-${this.id}" placeholder="Write your reply..."></textarea>
+                            <button class="arrow" id="arrow-${this.id}">
+                                <img src="SendArrow.png" alt="Arrow" />
+                            </button>
+                        </div>
+                        ${this.subReplies.map(reply => reply.render()).join('')}
+                    </div>
+                `;
+            };
+        };
+
+        var PostComponent = function(id, title, content, author, replies = []) {
+            this.id = id;
+            this.title = title;
+            this.content = content;
+            this.author = author;
+            this.replies = replies;
+
+            // Generates HTML for the post component
+            this.render = function() {
+                return `
+                    <div style="border:3px solid grey" class="post">
+                        <h2 class="post-title">${this.title}</h2>
+                        <p class="post-content">${this.content}</p>
+                        <p class="post-author">Posted by: ${this.author}</p>
+                        <button class="reply-button active" id="reply-${this.id}">Reply</button>
+                        <button class="cancel-button" id="cancel-${this.id}">Cancel</button>
+                        <div class="arrow-div">
+                            <textarea class="reply-textarea" id="textarea-${this.id}" placeholder="Write your reply..."></textarea>
+                            <button class="arrow" id="arrow-${this.id}">
+                                <img src="SendArrow.png" alt="Arrow" />
+                            </button>
+                        </div>
+                        ${this.replies.map(reply => reply.render()).join('')}
+                    </div>
+                `;
+            };
+        };
+
+        // Create sample data
+        var subReply1 = new ReplyComponent(3, "This is a sub-reply to the above reply.", "User3");
+        var reply1 = new ReplyComponent(1, "This is a reply to the post.", "User1", [subReply1]);
+        var reply2 = new ReplyComponent(2, "This is another reply to the post.", "User2");
+        var post1 = new PostComponent(1, "Post Title", "This is the content of the post.", "Author", [reply1, reply2]);
+
+        // Render post and replies
+        document.getElementById('postContainer').innerHTML = post1.render();
+
+
+
+
+        window.onload = function() {
+        var replyButtons = document.querySelectorAll('.reply-button');
+        var cancelButtons = document.querySelectorAll('.cancel-button');
+        
+        replyButtons.forEach(function(button, index) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                var parentElement = this.parentElement;
+                var textarea = parentElement.querySelector('.reply-textarea');
+                var arrow = parentElement.querySelector('.arrow');
+                textarea.classList.toggle('open');
+                arrow.style.display = textarea.classList.contains('open') ? 'inline-block' : 'none';
+                this.classList.toggle('active');
+                cancelButtons[index].classList.toggle('active');
+            });
+        });
+
+        cancelButtons.forEach(function(button, index) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                var parentElement = this.parentElement;
+                var textarea = parentElement.querySelector('.reply-textarea');
+                var arrow = parentElement.querySelector('.arrow');
+                textarea.classList.remove('open');
+                arrow.style.display = 'none';
+                this.classList.toggle('active');
+                replyButtons[index].classList.toggle('active');
+            });
+        });
+    };
+
+        
+    </script>
 </body>
 </html>
