@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!-- Defining character encoding -->
-    <meta charset="UTF-8" />
-    <script  type ="module" src="/index.js"></script>
+    <meta charset="UTF-8">
+
     <!-- Setting up viewport for responsive design -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Defining the page title -->
     <title>Home/Feed</title>
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap"
-    />
+    <!-- Deferring main JavaScript module -->
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+   
+    <!-- Importing external fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script type ="module" src="test.js"></script>
+    <!-- Styling for various elements -->
     <style>
-       #login-button, #logout-button {
+        #login-button, #logout-button {
         font-family: 'Montserrat', sans-serif;
         color: white;
         background-color: #67929e;
@@ -106,20 +105,8 @@
         }
         /* Styling for login form */
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-  .title{
-    font-family:'Shrikhand', cursive;
-   color: #2b6c82;
-   font-size: 25px;
-   margin-bottom: 0px;
-  }
-  .category{
-    text-transform: uppercase;
-    color: #2b6c82;
-   font-size: 17px;
   
-   margin: 5px;
-   margin-top: 5px;
-  }
+      
 
         .mynav {
             white-space: nowrap;
@@ -164,109 +151,52 @@
           transform: translateX(-60px);
           transition: all 0.4s;
         }
-      .post-form,
-      .reply-form {
-        margin-bottom: 20px;
-      }
-
-      
-      .post {
-        background-color: #f9f9f9;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-      }
-
-      #logout-button:hover {
-        background-color: #2b6c82;
-      }
-
-      .container {
-        margin-top: 20px;
-        display: flex;
-        flex-wrap: wrap;
-
-        margin-left: 9%;
-      }
-      .post {
-        text-align: center;
-        background-color: #dcebef;
-
-        width: 410px;
-        height: 500px;
-
-        margin-left: 20px;
-        margin-top: 20px;
-        overflow: hidden; /* Hide text that doesn't fit in the box */
-        text-overflow: ellipsis; /* Add ... for overflow text */
-      }
-      .read-more {
-        margin-top: 10px;
-        border: 10px solid #2b6c82;
-        background-color: #2b6c82;
-        font-weight: bold;
-        color: lightblue;
-        cursor: pointer;
-      }
-      .read-more:hover {
-        border: 10px solid #2b6c82;
-        background-color: #2b6c82;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-      }
-      /* Add this to your CSS file */
-      .post img {
-        width: 400px;
-        height: 170x;
-        object-fit: cover;
-      }
-      .image-size-percentage {
-        width: 70%; /* Set the desired width percentage */
-        height: 50%; /* Set the desired height percentage */
-      }
     </style>
-  </head>
-  <body>
+    
+</head>
+<body>
     <div class="content">
-      <!-- Displaying blog title -->
-      <div class="header">
-        <h1>Kelsey's Blog</h1>
-      </div>
-
-      <!-- Horizontal separator line -->
-      <div class="line"></div>
-
-      <!-- Navigation bar -->
-
-      <nav class="mynav">
-        <div>
-          <ul>
-            <li><a href="/index.html">HOME/FEED</a></li>
-            <li><a href="/create-account.html">CREATE ACCOUNT</a></li>
-            <span class="target"></span>
-          </ul>
+        <!-- Displaying blog title -->
+        <div class="header">
+            <h1>Kelsey's Blog</h1>
         </div>
-      </nav>
 
-      <span class="target"></span>
-      <div id="container" class="container"></div>
-    </div>
-  </body>
-  <script defer>
+        <!-- Horizontal separator line -->
+        <div class="line"></div>
+      
+        <!-- Navigation bar -->
+
+        
+        <nav class="mynav">
+            <div>
+                <ul> 
+                    <li><a href="/index.html">HOME/FEED</a></li>
+                    <li><a href="/create-account.html">CREATE ACCOUNT</a></li>
+                    <span class="target"></span>
+                </ul>
+            </div>   
+        </nav>
+
+        <span class="target"></span>
+        <div id="container" class="container">
+           
+ 
+</body>
+<script defer>
     // Get current page URL
     let url = window.location.href;
-
+  
     // Select nav links
-    let navLinks = document.querySelectorAll(".mynav a");
-
+    let navLinks = document.querySelectorAll('.mynav a');
+  
     // Loop through links
     for (let navLink of navLinks) {
-      // Check if link href matches current URL
-      if (navLink.href == url) {
-        // Add 'active' class
-        navLink.classList.add("active");
-      }
+        // Check if link href matches current URL
+        if (navLink.href == url) {
+            // Add 'active' class
+            navLink.classList.add('active');
+        }
     }
   </script>
+  
 </html>
