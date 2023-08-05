@@ -42,7 +42,7 @@ onAuthStateChanged(auth, (user) => {
           //add admin link to navbar if user is admin
           let AdminLi = document.createElement("li");
           let adminLink = document.createElement("a");
-          adminLink.href = "admin.html";
+          adminLink.href = "/admin.html";
           adminLink.textContent = "ADMIN";
           AdminLi.appendChild(adminLink);
           navbar.insertBefore(AdminLi, navbar.lastElementChild);
@@ -50,7 +50,7 @@ onAuthStateChanged(auth, (user) => {
           //add post link to navbar if user is admin
           let postCreatorli = document.createElement("li");
           let postCreatorLink = document.createElement("a");
-          postCreatorLink.href = "postcreate.html";
+          postCreatorLink.href = "/postcreate.html";
           postCreatorLink.textContent = "POST CREATOR";
           postCreatorli.appendChild(postCreatorLink);
           navbar.insertBefore(postCreatorli, navbar.lastElementChild);
@@ -175,7 +175,7 @@ imageElement.classList.add('image-size-percentage');
 function gotoPost(postId) {
   onAuthStateChanged(auth, (user) => {
     if (user) { 
-      window.location.href = "posts.html?id=" + postId;
+      window.location.href = "/posts.html?id=" + postId;
     }else {
       alert("You must be logged in to view posts");
     }
