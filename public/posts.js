@@ -33,24 +33,6 @@ const firebaseApp = initializeApp({
   appId: "1:882433426371:web:f050a491cfbbc15e347376",
 });
 
-
-        let url = window.location.href;
-        let navLinks = document.querySelectorAll('.mynav a');
-        for (let navLink of navLinks) {
-            if (navLink.href == url) {
-                navLink.classList.add('active');
-            }
-        }
-    
-
-
-
-
-
-
-
-
-
 const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
    
@@ -314,7 +296,7 @@ if (docSnap.exists()) {
 
   // Create the post author element
   const postAuthor = document.createElement("p");
-  postAuthor.textContent = `Posted by: Kelsey`;
+  postAuthor.textContent = `Posted by:Kelsey`;
 
   // Create the reply button element
   const replyButton = document.createElement("button");

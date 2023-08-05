@@ -18,7 +18,7 @@ const firebaseApp = initializeApp({
     appId: "1:882433426371:web:f050a491cfbbc15e347376"
 });
 let auth= getAuth(firebaseApp);
-let user = auth.currentUser;
+let user = auth.currentUser;s
 onAuthStateChanged(auth, (user) => {
     auth.currentUser.getIdTokenResult()
     .then((idTokenResult) => {
